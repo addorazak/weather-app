@@ -50,7 +50,7 @@ locationBtn.addEventListener("click", (e) => {
 async function getWeatherDataByCity(city) {
   try {
     const response = await fetch(
-      `http://localhost:8000/api/weather?city=${city}`
+      `https://weather-backend-uebj.onrender.com/api/weather?city=${city}`
     );
     const data = await response.json();
     displayCurrentWeather(data.current);
@@ -65,7 +65,7 @@ async function getWeatherDataByCity(city) {
 async function getWeatherDataByCoords(lat, lon) {
   try {
     const response = await fetch(
-      `http://localhost:8000/api/weather?lat=${lat}&lon=${lon}`
+      `https://weather-backend-uebj.onrender.com/api/weather?lat=${lat}&lon=${lon}`
     );
     const data = await response.json();
     displayCurrentWeather(data.current);
