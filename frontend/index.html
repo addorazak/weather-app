@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&family=Raleway:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="images/ClearSky.png" />
+    <title>Current Weather & Forecast App</title>
+  </head>
+  <body>
+    <!-- Header & Hero Section -->
+    <section id="header-hero" class="header-hero">
+      <header id="header" class="header">
+        <div class="header-img">
+          <img src="images/weather.png" alt="Thunder Bolt" class="logo" />
+        </div>
+        <div class="header-content">
+          <h1>Chiichy Weather App</h1>
+          <p class="tagline">Get the latest weather updates instantly</p>
+        </div>
+      </header>
+      <div id="hero" class="hero">
+        <div class="slide active">
+          <h2>Check Your Local Forecast</h2>
+          <p>Stay updated with live weather from your location.</p>
+        </div>
+        <div class="slide">
+          <h2>Plan Your Week</h2>
+          <p>Know what to wear and when to carry an umbrella.</p>
+        </div>
+        <div class="slide">
+          <h2>Real-Time Forecast</h2>
+          <p>Powered by OpenWeatherMap and geolocation accuracy.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search Section -->
+    <section id="search" class="search">
+      <div class="search-container">
+        <div class="search-input-wrapper">
+          <input id="input" type="text" placeholder="Enter city name..." />
+          <img src="images/search.png" alt="search icon" class="search-icon" />
+        </div>
+        <button type="button" class="search-btn">Search</button>
+        <button type="button" class="location-btn">Use My Location</button>
+      </div>
+    </section>
+
+    <!-- Current & Weather Forecast Section Begins -->
+    <section id="weather-section" class="weather-section">
+      <!-- Search By Name => Current & Weather Forecast -->
+      <div class="weather-container">
+        <!-- Current Weather -->
+        <div class="current-weather">
+          <h2>Current Weather: <span id="city"></span></h2>
+          <div class="weather-info">
+            <img
+              id="weather-icon"
+              class="weather-icon"
+              src=""
+              alt="Weather icon"
+            />
+            <div class="temperature" id="temperature"></div>
+            <div class="weather-description" id="description"></div>
+            <div class="weather-details">
+              <div class="detail">
+                <img src="images/temperature.png" alt="thermometer" />
+                <div>
+                  <span>Temperature:</span>
+                  <span class="temperature"></span>
+                </div>
+              </div>
+              <div class="detail">
+                <img src="images/humidity.png" alt="hygrometer" />
+                <div>
+                  <span>Humidity:</span>
+                  <span class="humidity"></span>
+                </div>
+              </div>
+              <div class="detail">
+                <img src="images/clouds.png" alt="clouds" />
+                <div>
+                  <span>Cloud Cover:</span>
+                  <span id="clouds"></span>
+                </div>
+              </div>
+              <div class="detail">
+                <img src="images/feels.png" alt="" />
+                <div>
+                  <span>Feels Like:</span>
+                  <span class="feels-like"></span>
+                </div>
+              </div>
+              <div class="detail">
+                <img src="images/wind.png" alt="" />
+                <div>
+                  <span>Wind Speed:</span>
+                  <span class="wind"></span>
+                </div>
+              </div>
+              <div class="detail">
+                <img src="images/pressure.png" alt="barometer" />
+                <div>
+                  <span>Pressure:</span>
+                  <span class="pressure"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Current Weather & 5 Day Forcast -->
+        <div class="current-weather-forecast">
+          <!-- Current Weather Section -->
+          <div class="current">
+            <!-- Current Weather Details -->
+            <div class="current-header">
+              <div class="datetime"></div>
+              <div class="location"></div>
+            </div>
+
+            <!-- Current Weather Conditions -->
+            <div class="current-conditions">
+              <div class="icon-container">
+                <img src="" alt="Weather Icon" class="weather-icon" />
+                <div id="main-temp" class="temperature"></div>
+              </div>
+
+              <p class="weather-summary"></p>
+            </div>
+
+            <!-- Current Weather Metrics -->
+            <div class="weather-metrics">
+              <div class="metric">
+                <span>Wind Sp:</span>
+                <span class="wind"></span>
+              </div>
+              <div class="metric">
+                <span>Pressure:</span>
+                <span class="pressure"></span>
+              </div>
+              <div class="metric">
+                <span>Humidity:</span>
+                <span class="humidity"></span>
+              </div>
+              <div class="metric">
+                <span>Wind Dir:</span>
+                <span class="wind-direction"></span>
+              </div>
+              <div class="metric">
+                <span>Feels like:</span>
+                <span class="feels-like"></span>
+              </div>
+              <div class="metric">
+                <span>Visibility:</span>
+                <span class="visibility"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weather Forecast Section -->
+          <div class="forecast">
+            <h2 class="day">5-Day Forecast</h2>
+            <div id="forecast-container">
+              <div class="dropdown-wrapper template">
+                <!-- Dropdown Button -->
+                <button type="button" class="dropdown-btn">
+                  <span class="forecast-day"></span>
+                  <div class="weather-information">
+                    <img class="forecast-icon" src="" alt="weather icon" />
+                    <span class="temp"></span>
+                  </div>
+                  <span class="weather-desc"></span>
+                  <span class="dropdown-icon">▼</span>
+                </button>
+                <!-- Dropdown Content -->
+                <div class="dropdown-content">
+                  <div class="dropdown-item">
+                    <img class="forecast-icon" src="" alt="" />
+                    <div class="item-p">
+                      <p class="first-p"></p>
+                      <p class="second-p"></p>
+                    </div>
+                  </div>
+
+                  <div class="dropdown-item-grid">
+                    <div class="item-grid">
+                      <img class="prep" src="images/precipitation.png" alt="" />
+                      <span class="precipitation"></span>
+                    </div>
+                    <div class="item-grid">
+                      <img class="nav" src="images/navigation.png" alt="" />
+                      <span class="navigation"></span>
+                    </div>
+                    <div class="item-grid">
+                      <img class="gauge" src="images/gauge.png" alt="" />
+                      <span class="forecast-pressure"></span>
+                    </div>
+                    <div class="item-grid">
+                      <span>Humidity:</span>
+                      <span class="forecast-humidity"></span>
+                    </div>
+                    <div class="item-grid">
+                      <img class="cloud" src="images/clouds.png" alt="" />
+                      <span>Clouds:</span>
+                      <span class="clouds"></span>
+                    </div>
+                    <div class="item-grid">
+                      <span>Dew point:</span>
+                      <span class="forecast-dew"></span>
+                    </div>
+                  </div>
+                  <div class="dropdown-item-table">
+                    <table class="temp-table">
+                      <thead>
+                        <tr>
+                          <th>Temp</th>
+                          <th>Morning</th>
+                          <th>Afternoon</th>
+                          <th>Evening</th>
+                          <th>Night</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Temperature</td>
+                          <td><span class="tempOne"></span>°C</td>
+                          <td><span class="tempTwo"></span>°C</td>
+                          <td><span class="tempThree"></span>°C</td>
+                          <td><span class="tempFour"></span>°C</td>
+                        </tr>
+                        <tr>
+                          <td>Feels like</td>
+                          <td><span class="feelOne"></span>°C</td>
+                          <td><span class="feelTwo"></span>°C</td>
+                          <td><span class="feelThree"></span>°C</td>
+                          <td><span class="feelFour"></span>°C</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="dropdown-item-sun">
+                    <div class="sun-times">
+                      <div class="sunrise">
+                        <span class="sun">Sunrise</span>
+                        <span class="rise"></span>
+                      </div>
+                      <div class="sunset">
+                        <span class="sun">Sunset</span>
+                        <span class="set"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Current & Weather Forecast Section Ends -->
+
+    <script src="script.js"></script>
+  </body>
+</html>
