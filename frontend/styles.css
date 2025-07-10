@@ -119,6 +119,10 @@ h2 {
 
 /* Responsive design */
 @media (max-width: 768px) {
+  #header-hero {
+    background-position: top center;
+    background-size: cover;
+  }
   #header {
     flex-direction: row;
     justify-content: center;
