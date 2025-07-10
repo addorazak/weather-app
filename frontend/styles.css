@@ -16,13 +16,28 @@ h2 {
   }
 }
 /* Header and Hero Section Styles */
+
 #header-hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("../frontend/images/weather-bg.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  position: relative;
   color: #ffffff;
+}
+#header-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5));
+  z-index: 1;
+}
+
+#header-hero {
+  position: relative;
+  z-index: 2;
 }
 
 /* Header Styles */
