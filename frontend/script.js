@@ -48,6 +48,12 @@ locationBtn.addEventListener("click", (e) => {
 
 // Fetch weather data by city (from your backend)
 async function getWeatherDataByCity(city) {
+  // Hide Weather Section
+  document.getElementById("weather-section").style.display = "none";
+
+  // Show Loader
+  document.getElementById("loading").classList.remove("hidden");
+
   try {
     const response = await fetch(
       `https://weather-backend-uebj.onrender.com/api/weather?city=${city}`
@@ -59,10 +65,19 @@ async function getWeatherDataByCity(city) {
     console.error("Error fetching city weather:", error);
     alert("Something went wrong.");
   }
+
+  // Hide Loader
+  document.getElementById("loading").classList.add("hidden");
 }
 
 // Fetch weather data by coordinates (from your backend)
 async function getWeatherDataByCoords(lat, lon) {
+  // Hide Weather Section
+  document.getElementById("weather-section").style.display = "none";
+
+  // Show Loader
+  document.getElementById("loading").classList.remove("hidden");
+
   try {
     const response = await fetch(
       `https://weather-backend-uebj.onrender.com/api/weather?lat=${lat}&lon=${lon}`
@@ -74,6 +89,8 @@ async function getWeatherDataByCoords(lat, lon) {
     console.error("Error fetching coord weather:", error);
     alert("Something went wrong.");
   }
+  // Hide Loader
+  document.getElementById("loading").classList.add("hidden");
 }
 
 // Fetch weather data by city
@@ -124,8 +141,8 @@ async function getWeatherDataByCoords(lat, lon) {
 
 // Display Current Weather and Condition Metrics
 function displayCurrentWeather(data) {
-  // Show current weather section
-  document.querySelector(".current-weather").style.display = "block";
+  // Show Weather Section
+  document.getElementById("weather-section").style.display = "block";
 
   // Location (City & Country)
   cityName = data.name;
@@ -200,8 +217,6 @@ function displayCurrentWeather(data) {
 
 // Display Weather Forecast and Conditions
 function displayWeatherForecast(data) {
-  document.querySelector(".current-weather-forecast").style.display = "flex";
-
   const forecasts = data.list;
   const container = document.getElementById("forecast-container");
   const template = container.querySelector(".dropdown-wrapper.template");
