@@ -276,13 +276,8 @@ function displayWeatherForecast(data) {
     clone.querySelector(".forecast-dew").textContent = `${dew}%`;
 
     // SUNRISE & SUNSET
-    const sunrise = formatTimestamp(
-      data.city.sunrise,
-      data.city.timezone
-    ).split(",")[1];
-    const sunset = formatTimestamp(data.city.sunset, data.city.timezone).split(
-      ","
-    )[1];
+    const sunrise = formatTimeOnly(data.city.sunrise, data.city.timezone);
+    const sunset = formatTimeOnly(data.city.sunset, data.city.timezone);
     clone.querySelector(".rise").textContent = sunrise;
     clone.querySelector(".set").textContent = sunset;
 
@@ -409,4 +404,23 @@ function formatTimestamp(timestamp, offsetInSeconds) {
   );
 
   return formatted;
+}
+
+// Format Time Only
+function formatTimeOnly(timestamp, offsetInSeconds) {
+  const adjustedTimestamp = (timestamp + offsetInSeconds) * 1000;
+  const date = new Date(adjustedTimestamp);
+
+  const options = {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+    timeZone: "UTC",
+  };
+
+  let formatted = date.toLocaleString("en-US", options);
+  return formatted
+    .replace("AM", "am")
+    .replace("PM", "pm")
+    .replace(/\s+(am|pm)/, "$1");
 }
