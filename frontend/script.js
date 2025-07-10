@@ -222,7 +222,7 @@ function displayWeatherForecast(data) {
     clone.style.display = "block";
 
     // DAY
-    const date = new Date(first.dt_txt + " UTC");
+    const date = new Date(first.dt_txt.replace(" ", "T") + "Z");
     const formatted = date.toLocaleDateString("en-US", {
       weekday: "short",
       month: "short",
