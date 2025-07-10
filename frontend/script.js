@@ -393,8 +393,8 @@ function calculateDewPoint(tempC, humidityPercent) {
 
 // Format Timestamp
 function formatTimestamp(timestamp, offsetInSeconds) {
-  const adjustedTimestamp = (timestamp + offsetInSeconds) * 1000;
-  const date = new Date(adjustedTimestamp);
+  const adjustedTime = (timestamp + offsetInSeconds) * 1000;
+  const date = new Date(adjustedTime);
   const options = {
     month: "short",
     day: "numeric",
@@ -404,10 +404,9 @@ function formatTimestamp(timestamp, offsetInSeconds) {
     timeZone: "UTC",
   };
   let formatted = date.toLocaleString("en-US", options);
-  formatted = formatted
-    .replace("AM", "am")
-    .replace("PM", "pm")
-    .replace(/\s+(am|pm)/, "$1");
+  formatted = formatted.replace(/\s?(AM|PM)/, (match) =>
+    match.toLowerCase().trim()
+  );
 
   return formatted;
 }
